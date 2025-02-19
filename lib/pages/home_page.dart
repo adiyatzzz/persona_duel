@@ -1,65 +1,63 @@
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:persona_duel/widgets/home_card_loader.dart';
+import 'package:persona_duel/widgets/my_appbar.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Persona Duel",
-          style: TextStyle(fontSize: 24, color: Colors.white),
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.7,
-            height: 500,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned.fill(
-                  child: Image.asset(
-                    "assets/images/cardbg.jpg", // Pastikan path benar
-                    fit: BoxFit.cover, // Stretch gambar sesuai ukuran parent
-                  ),
-                ),
-
-                // Foreground Image (Gambar atas)
-                Align(
-                  alignment: Alignment.center, // Posisikan gambar tengah
-                  child: FractionallySizedBox(
-                    widthFactor: 0.8, // 80% dari lebar parent (lebih kecil)
-                    heightFactor: 0.8, // 80% dari tinggi parent (lebih kecil)
-                    child: Image.network(
-                      "https://megatenwiki.com/images/b/b3/P3_Orpheus_Artwork.png",
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ],
+        appBar: MyAppbar(),
+        body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 0, 23, 54),
+                    Color.fromARGB(255, 0, 24, 62),
+                    Color.fromARGB(255, 0, 23, 54)
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.0, 0.5, 1.0]),
+            ),
+            child: HomeCardLoader()),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: Colors.white, // Warna border putih
+                width: 2, // Ketebalan border
+              ),
             ),
           ),
-          SizedBox(
-            height: 20,
+          child: BottomNavigationBar(
+            // Warna ikon saat dipilih
+            unselectedItemColor: Colors.white, // Warna ikon saat tidak dipilih
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.collections),
+                label: "Collection",
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/icon/battle.svg",
+                  width: 24,
+                  height: 24,
+                  colorFilter: ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                label: "Battle",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.mail),
+                label: "Mail",
+              ),
+            ],
           ),
-          Center(
-            child: Text(
-              "ORPHEUS",
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.collections), label: "Collection"),
-        BottomNavigationBarItem(icon: Icon(Icons.group), label: "Battle"),
-        BottomNavigationBarItem(icon: Icon(Icons.mail), label: "Mail"),
-      ]),
-    );
+        ));
   }
 }
