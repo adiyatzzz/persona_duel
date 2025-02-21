@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persona_duel/pages/detail_page.dart';
 import 'package:persona_duel/pages/home_page.dart';
 
 class MyRoute {
@@ -7,6 +8,11 @@ class MyRoute {
       case "/":
         return MaterialPageRoute(
           builder: (context) => HomePage(),
+        );
+
+      case "/detail":
+        return MaterialPageRoute(
+          builder: (context) => DetailPage(),
         );
 
       default:

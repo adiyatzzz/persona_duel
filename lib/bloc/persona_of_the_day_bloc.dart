@@ -5,8 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-class HomeCardBloc extends Cubit<Map<String, dynamic>> {
-  HomeCardBloc() : super({});
+class PersonaOfTheDayBloc extends Cubit<Map<String, dynamic>> {
+  PersonaOfTheDayBloc() : super({});
 
   Future<void> getPersonaOfTheDay() async {
     try {
@@ -15,8 +15,6 @@ class HomeCardBloc extends Cubit<Map<String, dynamic>> {
 
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-        // List<Persona> personas =
-        //     data.map((json) => Persona.fromJson(json)).toList();
 
         DateTime today = DateTime.now();
         int dayOfYear = int.parse(DateFormat("D").format(today));
@@ -24,7 +22,7 @@ class HomeCardBloc extends Cubit<Map<String, dynamic>> {
           dayOfYear -= data.length;
         }
 
-        emit(data[dayOfYear]);
+        emit(data[128]);
       }
     } catch (e) {
       print(e);

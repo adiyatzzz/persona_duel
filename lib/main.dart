@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:persona_duel/bloc/home_card_bloc.dart';
+import 'package:persona_duel/bloc/persona_of_the_day_bloc.dart';
 import 'package:persona_duel/routes/myroute.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = MyRoute();
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => HomeCardBloc())],
+        providers: [BlocProvider(create: (context) => PersonaOfTheDayBloc())],
         child: MaterialApp(
           title: 'Persona Duel',
           debugShowCheckedModeBanner: false,
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
                 seedColor: Color.fromARGB(255, 121, 215, 253),
                 secondary: Color.fromARGB(255, 0, 23, 54)),
             scaffoldBackgroundColor: Color.fromARGB(255, 0, 23, 54),
-            appBarTheme: AppBarTheme(
-                backgroundColor: Color.fromARGB(255, 0, 23, 54)),
+            appBarTheme:
+                AppBarTheme(backgroundColor: Color.fromARGB(255, 0, 23, 54)),
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
                 backgroundColor: Color.fromARGB(255, 0, 23, 54),
                 unselectedItemColor: Colors.white,
