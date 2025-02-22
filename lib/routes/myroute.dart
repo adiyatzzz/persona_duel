@@ -12,7 +12,10 @@ class MyRoute {
 
       case "/detail":
         return MaterialPageRoute(
-          builder: (context) => DetailPage(),
+          builder: (context) {
+            final args = settings.arguments as Map<String, dynamic>?;
+            return DetailPage(personaData: args ?? {});
+          },
         );
 
       default:

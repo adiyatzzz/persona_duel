@@ -8,8 +8,6 @@ class CardLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Panggil getPersonaOfTheDay() saat pertama kali widget dibangun
-    context.read<PersonaOfTheDayBloc>().getPersonaOfTheDay();
     return BlocBuilder<PersonaOfTheDayBloc, Map<String, dynamic>>(
       builder: (context, state) {
         // Cek apakah state kosong atau gambar belum termuat

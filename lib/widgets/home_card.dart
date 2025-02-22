@@ -10,6 +10,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PersonaOfTheDayBloc, Map<String, dynamic>>(
       builder: (context, state) {
+        print("Home : ${state}");
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -39,7 +40,7 @@ class HomeCard extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/detail");
+                Navigator.pushNamed(context, "/detail", arguments: state);
               },
               child: PersonaCard(
                 imageUrl: state["image"],

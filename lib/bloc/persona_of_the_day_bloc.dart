@@ -22,7 +22,7 @@ class PersonaOfTheDayBloc extends Cubit<Map<String, dynamic>> {
           dayOfYear -= data.length;
         }
 
-        emit(data[128]);
+        emit(data[dayOfYear]);
       }
     } catch (e) {
       print(e);
