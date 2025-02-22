@@ -3,10 +3,9 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
-class PersonaOfTheDayBloc extends Cubit<Map<String, dynamic>> {
-  PersonaOfTheDayBloc() : super({});
+class PersonasBloc extends Cubit<List<Map<String, dynamic>>> {
+  PersonasBloc() : super([]);
 
   Future<void> getPersonaOfTheDay() async {
     try {
@@ -15,14 +14,9 @@ class PersonaOfTheDayBloc extends Cubit<Map<String, dynamic>> {
 
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
-
-        DateTime today = DateTime.now();
-        int dayOfYear = int.parse(DateFormat("D").format(today));
-        if (dayOfYear > data.length) {
-          dayOfYear -= data.length;
-        }
-
-        emit(data[dayOfYear]);
+        List<Map<String, dynamic>> personas =
+            List<Map<String, dynamic>>.from(data);
+        emit(personas);
       }
     } catch (e) {
       print(e);

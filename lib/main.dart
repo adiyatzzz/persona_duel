@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:persona_duel/bloc/persona_of_the_day_bloc.dart';
+import 'package:persona_duel/bloc/personas_bloc.dart';
 import 'package:persona_duel/routes/myroute.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = MyRoute();
     return MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => PersonaOfTheDayBloc())],
+        providers: [BlocProvider(create: (context) => PersonasBloc())],
         child: MaterialApp(
           title: 'Persona Duel',
           debugShowCheckedModeBanner: false,

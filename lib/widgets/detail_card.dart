@@ -2,33 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:persona_duel/widgets/persona_card.dart';
 
 class DetailCard extends StatelessWidget {
-  Map<String, dynamic> state;
-  DetailCard({super.key, required this.state});
+  Map<String, dynamic> data;
+  DetailCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    // Jika state tidak ada, tampilkan pesan error
-    print(state);
-    if (state == null) {
-      return const Center(
-        child: Text(
-          "No persona data available",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-      );
-    }
 
     return ListView(
       children: [
         const SizedBox(height: 20),
         GestureDetector(
           onTap: () {},
-          child: Center(child: PersonaCard(imageUrl: state["image"])),
+          child: Center(child: PersonaCard(imageUrl: data["image"])),
         ),
         const SizedBox(height: 20),
         Center(
           child: Text(
-            state["name"] ?? "Unknown",
+            data["name"] ?? "Unknown",
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
@@ -47,7 +37,7 @@ class DetailCard extends StatelessWidget {
         ),
         Center(
           child: Text(
-            "- ${state["arcana"]} -",
+            "- ${data["arcana"]} -",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 30,
@@ -63,7 +53,7 @@ class DetailCard extends StatelessWidget {
         ),
         Center(
           child: Text(
-            "Level ${state["level"]} ",
+            "Level ${data["level"]} ",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25,
@@ -81,7 +71,7 @@ class DetailCard extends StatelessWidget {
           margin: const EdgeInsets.all(20),
           child: Center(
             child: Text(
-              "\"${state['description']}\"",
+              "\"${data['description']}\"",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
@@ -128,16 +118,16 @@ class DetailCard extends StatelessWidget {
                 ),
               ],
               rows: [
-                _buildStatRow("Strength", state["strength"]),
-                _buildStatRow("Magic", state["magic"]),
-                _buildStatRow("Endurance", state["endurance"]),
-                _buildStatRow("Agility", state["agility"]),
-                _buildStatRow("Luck", state["luck"]),
-                _buildStatRow("Weak", state["weak"]),
-                _buildStatRow("Resist", state["resists"]),
-                _buildStatRow("Reflect", state["reflects"]),
-                _buildStatRow("Absorbs", state["absorbs"]),
-                _buildStatRow("Nullifies", state["nullifies"]),
+                _buildStatRow("Strength", data["strength"]),
+                _buildStatRow("Magic", data["magic"]),
+                _buildStatRow("Endurance", data["endurance"]),
+                _buildStatRow("Agility", data["agility"]),
+                _buildStatRow("Luck", data["luck"]),
+                _buildStatRow("Weak", data["weak"]),
+                _buildStatRow("Resist", data["resists"]),
+                _buildStatRow("Reflect", data["reflects"]),
+                _buildStatRow("Absorbs", data["absorbs"]),
+                _buildStatRow("Nullifies", data["nullifies"]),
               ],
             ),
           ),

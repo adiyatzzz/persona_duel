@@ -15,7 +15,7 @@ class DetailPage extends StatelessWidget {
       appBar: MyAppbar(
         titlePage: "Persona Detail",
       ),
-      body: CardLoader(pageLoad: DetailCard(state: personaData)),
+      body: CardLoader(pageLoad: DetailCard(data: personaData), imageLoad: personaData["image"],),
       bottomNavigationBar: const myBottomNavbar(),
     );
   }
