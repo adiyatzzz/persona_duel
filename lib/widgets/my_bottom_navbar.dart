@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class myBottomNavbar extends StatelessWidget {
-  const myBottomNavbar({
+class MyBottomNavbar extends StatelessWidget {
+  final int selectedIndex;
+  const MyBottomNavbar({
     super.key,
+    this.selectedIndex = -1,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         border: Border(
           top: BorderSide(
@@ -18,9 +21,19 @@ class myBottomNavbar extends StatelessWidget {
         ),
       ),
       child: BottomNavigationBar(
-        // Warna ikon saat dipilih
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white, // Warna ikon saat tidak dipilih
+        selectedItemColor: (selectedIndex >= 0)
+            ? Color.fromARGB(255, 121, 215, 253)
+            : Colors.white,
+        unselectedItemColor: Colors.white,
+        onTap: (value) {
+          if (value == 0) {
+            Navigator.pushNamed(context, "/collection");
+          } else if (value == 1) {
+            Navigator.pushNamed(context, "/battle");
+          } else if (value == 2) {
+            Navigator.pushNamed(context, "/mail");
+          }
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.collections),

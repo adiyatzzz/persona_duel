@@ -10,13 +10,13 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Detail : ${personaData}");
+    print("Detail : $personaData");
     return Scaffold(
       appBar: MyAppbar(
         titlePage: "Persona Detail",
       ),
       body: CardLoader(pageLoad: DetailCard(data: personaData), imageLoad: personaData["image"],),
-      bottomNavigationBar: const myBottomNavbar(),
+      bottomNavigationBar: const MyBottomNavbar(),
     );
   }
 }

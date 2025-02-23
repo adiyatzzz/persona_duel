@@ -8,19 +8,23 @@ import 'package:persona_duel/widgets/my_appbar.dart';
 import 'package:persona_duel/widgets/my_bottom_navbar.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    context.read<PersonasBloc>().getPersonaOfTheDay().then(
+          (value) => true,
+        );
     return BlocBuilder<PersonasBloc, List<Map<String, dynamic>>>(
       builder: (context, state) {
         // Tampilkan loading saat state masih kosong
+        print(state);
         if (state.isEmpty) {
-          context.read<PersonasBloc>().getPersonaOfTheDay();
           return Scaffold(
             appBar: MyAppbar(isHome: true, titlePage: "Persona Duel"),
-            body: const Center(child: CircularProgressIndicator()), // Loading indicator
-            bottomNavigationBar: myBottomNavbar(),
+            body: const Center(
+                child: CircularProgressIndicator()), // Loading indicator
+            bottomNavigationBar: MyBottomNavbar(),
           );
         }
 
@@ -38,10 +42,9 @@ class HomePage extends StatelessWidget {
             imageLoad: data["image"],
             pageLoad: HomeCard(data: data),
           ),
-          bottomNavigationBar: myBottomNavbar(),
+          bottomNavigationBar: MyBottomNavbar(),
         );
       },
     );
   }
 }
-

@@ -11,8 +11,8 @@ class PersonaCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: const Color.fromARGB(127, 255, 197, 74),
-            blurRadius: 10,
-            spreadRadius: 5,
+            blurRadius: 3,
+            spreadRadius: 3,
             offset: const Offset(0, 0),
           ),
         ],

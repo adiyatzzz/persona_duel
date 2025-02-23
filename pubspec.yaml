@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.17
   intl: ^0.20.2
   bloc: ^9.0.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
   assets:
     - assets/images/cardbg.jpg
     - assets/icon/battle.svg
+    - assets/db/persona_compendium.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
