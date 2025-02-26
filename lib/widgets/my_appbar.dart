@@ -28,7 +28,7 @@ class MyAppbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 onPressed: () {
                   // Tambahkan aksi yang diinginkan saat tombol ditekan
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacementNamed("/");
                 },
               ),
             ]

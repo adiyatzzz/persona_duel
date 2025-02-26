@@ -69,6 +69,29 @@ class CollectionPage extends StatelessWidget {
                               ),
                             )),
                       ),
+                    ),
+                    Align(
+                      alignment: Alignment(0.7, -0.8),
+                      child: Text(
+                        state[index]['level'].toString() ?? "Unknown",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                          shadows: [
+                            const Shadow(
+                                blurRadius: 10,
+                                color: Colors.black,
+                                offset: Offset(3, 3)),
+                            Shadow(
+                                blurRadius: 20,
+                                color: Colors.black,
+                                offset: const Offset(3, 3)),
+                          ],
+                        ),
+                      ),
                     )
                   ]),
                 );

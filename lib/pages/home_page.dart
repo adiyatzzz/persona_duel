@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:persona_duel/bloc/personas_bloc.dart';
 import 'package:persona_duel/widgets/home_card.dart';
-import 'package:persona_duel/widgets/card_loader.dart';
 import 'package:persona_duel/widgets/my_appbar.dart';
 import 'package:persona_duel/widgets/my_bottom_navbar.dart';
 
@@ -17,8 +16,6 @@ class HomePage extends StatelessWidget {
         );
     return BlocBuilder<PersonasBloc, List<Map<String, dynamic>>>(
       builder: (context, state) {
-        // Tampilkan loading saat state masih kosong
-        print(state);
         if (state.isEmpty) {
           return Scaffold(
             appBar: MyAppbar(isHome: true, titlePage: "Persona Duel"),
@@ -38,10 +35,7 @@ class HomePage extends StatelessWidget {
 
         return Scaffold(
           appBar: MyAppbar(isHome: true, titlePage: "Persona Duel"),
-          body: CardLoader(
-            imageLoad: data["image"],
-            pageLoad: HomeCard(data: data),
-          ),
+          body: HomeCard(data: data),
           bottomNavigationBar: MyBottomNavbar(),
         );
       },

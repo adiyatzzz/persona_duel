@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class PersonaCard extends StatelessWidget {
-  String imageUrl;
-  PersonaCard({super.key, required this.imageUrl});
+  final String imageUrl;
+  const PersonaCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +35,16 @@ class PersonaCard extends StatelessWidget {
               child: FractionallySizedBox(
                 widthFactor: 0.8,
                 heightFactor: 0.8,
-                child: Image.network(
-                  imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.image_not_supported, size: 50),
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) {
+                    print("Error loading image: $imageUrl");
+                    return const Icon(Icons.image_not_supported, size: 50);
+                  },
                 ),
               ),
             ),
