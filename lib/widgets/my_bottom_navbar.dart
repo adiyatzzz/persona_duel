@@ -26,11 +26,11 @@ class MyBottomNavbar extends StatelessWidget {
             : Colors.white,
         unselectedItemColor: Colors.white,
         onTap: (value) {
-          if (value == 0) {
+          if (value == 0 && selectedIndex != 0) {
             Navigator.pushNamed(context, "/collection");
-          } else if (value == 1) {
+          } else if (value == 1 && selectedIndex != 1) {
             Navigator.pushNamed(context, "/battle");
-          } else if (value == 2) {
+          } else if (value == 2 && selectedIndex != 2) {
             Navigator.pushNamed(context, "/mail");
           }
         },

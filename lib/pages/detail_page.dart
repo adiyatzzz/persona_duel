@@ -9,7 +9,6 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Detail : $personaData");
     return Scaffold(
       appBar: MyAppbar(
         titlePage: "Persona Detail",

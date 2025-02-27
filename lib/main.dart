@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
                 unselectedItemColor: Colors.white,
                 selectedItemColor: Color.fromARGB(255, 121, 215, 253)),
             useMaterial3: true,
+            iconTheme: IconThemeData(color: Colors.white),
           ),
           onGenerateRoute: (settings) => router.onRoute(settings),
         ));
